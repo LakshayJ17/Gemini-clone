@@ -194,6 +194,9 @@
         padding: 5px 10px;
     }
 
+    .search-box input{
+        font-size: 12px;
+    }
     .search-box div{
         gap: 5px;
     }
