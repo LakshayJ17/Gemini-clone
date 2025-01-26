@@ -10,7 +10,6 @@ This project is a clone of the Gemini application built using React. It includes
 - **JavaScript (ES6+)**: The programming language used for the project.
 - **CSS**: For styling the components.
 - **Context API**: For state management.
-- **Async/Await**: For handling asynchronous operations.
 
 ## Installation
 
