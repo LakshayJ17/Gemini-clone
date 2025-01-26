@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
 
-const {
+import {
     GoogleGenerativeAI,
     HarmCategory,
     HarmBlockThreshold,
-} = require("@google/generative-ai");
+} from "@google/generative-ai"
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
+    model: "gemini-1.5-flash",
 });
 
 const generationConfig = {
@@ -21,7 +21,7 @@ const generationConfig = {
     responseMimeType: "text/plain",
 };
 
-async function run({ prompt }) {
+async function run(prompt) {
     const chatSession = model.startChat({
         generationConfig,
         history: [
@@ -29,7 +29,21 @@ async function run({ prompt }) {
     });
 
     const result = await chatSession.sendMessage(prompt);
-    console.log(result.response.text());
+    const response = result.response
+    console.log(response.text());
+    return response.text();
+
+    // try {
+    //     const result = await chatSession.sendMessage(prompt);
+    //     console.log(await result.response.text());
+    // } catch (error) {
+    //     console.error("Error sending message:", error);
+    // }
 }
 
 export default run;
+
+
+
+
+
