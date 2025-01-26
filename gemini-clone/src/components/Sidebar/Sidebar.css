@@ -30,6 +30,9 @@
     cursor: pointer;
 }
 
+.sidebar .new-chat:hover{
+    background-color: #dfe3e8;
+}
 .sidebar .recent{
     display: flex;
     flex-direction: column;
