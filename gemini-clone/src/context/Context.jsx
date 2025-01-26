@@ -18,14 +18,26 @@ const ContextProvider = (props) => {
         }, 75 * index);
     }
 
-    const onSent = async () => {
+    const newChat = () =>{
+        setLoading(false)
+        setShowResult(false)
+    }
+
+    const onSent = async (prompt) => {
         setResultData("")                               // Clear the previous result
         setLoading(true)                                // Show the loader
         setShowResult(true)                             // Show the result
-        setRecentPrompt(input)                          // Set the recent prompt
-        setPrevPrompts(prev => [...prev, input])        // Add the input to the list of previous prompts
 
-        const response = await run(input) // This will return the response from the AI
+        let response;
+        if (prompt !== undefined) {
+            response = await run(prompt)                // This will return the response from the AI
+            setRecentPrompt(prompt)                     // Set the recent prompt
+        } else {
+            setPrevPrompts(prev => [...prev, input])    // Add the input to the list of previous prompts
+            setRecentPrompt(input)                      // Set the recent prompt
+            response = await run(input)                 // This will return the response from the AI
+        }
+
 
         // The output is somethings like xyz is a **abc** which is def*ghi*klm
         // This will convert the 2 stars to bold
@@ -63,7 +75,8 @@ const ContextProvider = (props) => {
         loading,
         resultData,
         input,
-        setInput
+        setInput,
+        newChat
     }
 
     return (
