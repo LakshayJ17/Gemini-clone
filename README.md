@@ -1,4 +1,4 @@
-Live link - https://geminiclone-app.netlify.app/
+# Live link - https://geminiclone-app.netlify.app/
 
 # Gemini React Clone
 
