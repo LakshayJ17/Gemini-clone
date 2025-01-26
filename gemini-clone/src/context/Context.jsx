@@ -53,8 +53,16 @@ const ContextProvider = (props) => {
         // This will convert the 1 star to break/new line
         let newResponse2 = newResponse.split("*").join("<br>")
 
+        let newResponse3 = newResponse2.split(" ")
+        for (let i = 0; i < newResponse3.length; i++) {
+            if (newResponse3[i].startsWith("##")) {
+                newResponse3[i] = "<h2>" + newResponse3[i].substring(2) + "</h2>"
+            }
+        }
+        newResponse3 = newResponse3.join(" ")
+
         // For typing effect - Split the response into words 
-        let newResponseArray = newResponse2.split(" ")
+        let newResponseArray = newResponse3.split(" ")
         for (let i = 0; i < newResponseArray.length; i++) {
             const nextWord = newResponseArray[i]
             delayPara(i, nextWord + " ")
